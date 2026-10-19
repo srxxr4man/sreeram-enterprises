@@ -14,6 +14,13 @@
   --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
   --curve-main: 8px;
   --curve-card: 12px;
+
+  /* new */
+  --accent-indigo: #6366f1;
+  --accent-teal: #2dd4bf;
+  --glass-fill: rgba(15, 23, 42, 0.45);
+  --glass-highlight: rgba(255, 255, 255, 0.14);
+  --glow-cyan: rgba(56, 189, 248, 0.35);
 }
 
 * {
@@ -59,4 +66,337 @@ img {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* =========================================================
+   1. LIVING BACKGROUND  (applies to the whole site, no markup change)
+   ========================================================= */
+
+/* Aurora: three slow-drifting blurred light pools */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 40% at 20% 25%, rgba(56, 189, 248, 0.22), transparent 70%),
+    radial-gradient(35% 35% at 80% 20%, rgba(99, 102, 241, 0.20), transparent 70%),
+    radial-gradient(45% 45% at 60% 85%, rgba(45, 212, 191, 0.14), transparent 70%);
+  filter: blur(40px);
+  animation: aurora-drift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Fine grid that fades out toward the edges + film grain */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 100%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 100%);
+}
+
+@keyframes aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(4%, -3%, 0) scale(1.08); }
+  100% { transform: translate3d(-4%, 3%, 0) scale(1.02); }
+}
+
+/* =========================================================
+   2. TYPE POLISH
+   ========================================================= */
+
+h1 { font-weight: 800; letter-spacing: -0.035em; }
+
+/* Opt-in: put on any heading for an animated gradient fill */
+.gradient-text {
+  background: linear-gradient(110deg, var(--text-main) 20%, var(--accent-cyan) 50%, var(--accent-indigo) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+  animation: text-shimmer 8s linear infinite;
+}
+
+@keyframes text-shimmer {
+  to { background-position: 200% center; }
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.35);
+  color: var(--text-main);
+}
+
+/* =========================================================
+   3. GLASS CARDS  (add class="glass-card" to your existing cards)
+   ========================================================= */
+
+.glass-card {
+  position: relative;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--curve-card);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+          backdrop-filter: blur(14px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 20px 40px -20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.5s var(--transition-smooth),
+              border-color 0.4s var(--transition-smooth),
+              box-shadow 0.5s var(--transition-smooth);
+  overflow: hidden;
+}
+
+/* Cursor-following spotlight (needs the small JS file) */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), var(--glow-cyan), transparent 60%);
+  transition: opacity 0.4s var(--transition-smooth);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 30px 60px -24px rgba(14, 165, 233, 0.35);
+}
+
+.glass-card:hover::before { opacity: 0.35; }
+.glass-card > * { position: relative; }
+
+/* =========================================================
+   4. BUTTONS  (add class="btn-glow" to primary buttons)
+   ========================================================= */
+
+.btn-glow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: 0;
+  border-radius: var(--curve-main);
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  box-shadow: 0 8px 24px -8px var(--glow-cyan);
+  overflow: hidden;
+  transition: transform 0.35s var(--transition-smooth), box-shadow 0.35s var(--transition-smooth);
+}
+
+/* light sweep on hover */
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s var(--transition-smooth);
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -8px rgba(56, 189, 248, 0.6);
+}
+.btn-glow:hover::after { left: 140%; }
+.btn-glow:active { transform: translateY(0) scale(0.98); }
+
+/* secondary: outlined glass */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--curve-main);
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+.btn-ghost:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+/* =========================================================
+   5. NAVBAR  (add class="navbar" to your header/nav)
+   ========================================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(2, 6, 23, 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+          backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* animated underline for nav links */
+.navbar a {
+  position: relative;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: var(--accent-cyan);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--transition-smooth);
+}
+.navbar a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* =========================================================
+   6. ONE ORCHESTRATED PAGE-LOAD SEQUENCE  (hero)
+   Add class="hero-seq" to the hero wrapper; its direct children
+   enter one after another.
+   ========================================================= */
+
+.hero-seq > * {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+  animation: hero-in 1s var(--transition-smooth) forwards;
+}
+.hero-seq > *:nth-child(1) { animation-delay: 0.10s; }
+.hero-seq > *:nth-child(2) { animation-delay: 0.25s; }
+.hero-seq > *:nth-child(3) { animation-delay: 0.40s; }
+.hero-seq > *:nth-child(4) { animation-delay: 0.55s; }
+.hero-seq > *:nth-child(5) { animation-delay: 0.70s; }
+
+@keyframes hero-in {
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* =========================================================
+   7. SCROLL REVEAL  (class="reveal"; JS adds .is-visible)
+   ========================================================= */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--transition-smooth), transform 0.9s var(--transition-smooth);
+  transition-delay: var(--delay, 0s);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================================
+   8. ACCESSIBILITY + SCROLLBAR
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-darker); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent-blue), var(--accent-indigo));
+  border-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js .reveal, .hero-seq > * { opacity: 1; transform: none; filter: none; }
+}
+
+@media (max-width: 768px) {
+  body::before { filter: blur(24px); animation: none; }
+  .glass-card { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .glass-card:hover { transform: none; }
+}
+
+/* =========================================================
+   LIVING ANIMATED BACKGROUND (Aurora & Floating Orbs)
+   ========================================================= */
+
+/* Base background setup */
+body {
+  background-color: var(--bg-darker);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* Slow-drifting, multi-color ambient light auroras */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -30%;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(45% 45% at 20% 20%, rgba(56, 189, 248, 0.18), transparent 70%),
+    radial-gradient(40% 40% at 80% 30%, rgba(99, 102, 241, 0.15), transparent 70%),
+    radial-gradient(50% 50% at 50% 80%, rgba(14, 165, 233, 0.12), transparent 70%);
+  filter: blur(60px);
+  animation: aurora-drift 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, -4%, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(-3%, 4%, 0) scale(1.02);
+  }
+}
+
+/* Technical grid blueprint pattern with a soft radial fade mask */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 20%, transparent 90%);
+          mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 20%, transparent 90%);
+  animation: grid-pulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes grid-pulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
 }

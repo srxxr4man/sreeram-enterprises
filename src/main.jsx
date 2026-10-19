@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import "./App.css";
+import "./effects.js";
+import "./particles.js";
+import "./galaxy.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

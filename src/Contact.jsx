@@ -73,53 +73,54 @@ export default function Contact() {
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header-left">
-          <span className="section-tagline">Corporate Desk Connection</span>
-          <h2 className="section-title">Contact Our Team</h2>
+        <div className="section-header-left" style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <span className="section-tagline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Corporate Desk Connection</span>
+          <h2 className="section-title gradient-text" style={{ fontSize: '2.5rem', marginTop: '8px' }}>Contact Our Team</h2>
           <div className="title-accent-line"></div>
         </div>
         
-        <div className="contact-wrapper">
-          {/* Left Side: Complete Corporate Credentials Panel */}
-          <div className="contact-info">
-            <h3 className="info-brand-title">Sreeram Enterprises</h3>
-            <p className="contact-subtitle">Engineers • Contractors • Fabricators • Erectors</p>
+        <div className="contact-wrapper" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+          
+          {/* Left Side: Complete Corporate Credentials Panel (Now styled as a glass-card) */}
+          <div className="contact-info glass-card" style={{ padding: '32px' }}>
+            <h3 className="info-brand-title" style={{ fontSize: '1.5rem', marginBottom: '8px' }}>Sreeram Enterprises</h3>
+            <p className="contact-subtitle" style={{ color: 'var(--accent-cyan)', marginBottom: '24px', fontWeight: 500 }}>Engineers • Contractors • Fabricators • Erectors</p>
             
-            <div className="contact-meta-details">
+            <div className="contact-meta-details" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div className="meta-contact-item">
                 <b className="meta-contact-label">📍 Registered Office</b>
-                <p className="meta-contact-value">10/397, Chelakkavazhy</p>
-                <p className="meta-contact-value">Eroor South P.O, Tripunithura</p>
-                <p className="meta-contact-value">Ernakulam, Kerala - 682 306</p>
+                <p className="meta-contact-value" style={{ color: 'var(--text-muted)' }}>10/397, Chelakkavazhy</p>
+                <p className="meta-contact-value" style={{ color: 'var(--text-muted)' }}>Eroor South P.O, Tripunithura</p>
+                <p className="meta-contact-value" style={{ color: 'var(--text-muted)' }}>Ernakulam, Kerala - 682 306</p>
               </div>
 
               <div className="meta-contact-item">
                 <b className="meta-contact-label">📞 Telecommunications</b>
-                <p className="meta-contact-value">Primary: <a href="tel:+918547102556" className="contact-link">+91 85471 02556</a></p>
-                <p className="meta-contact-value">Secondary: <a href="tel:+919387381780" className="contact-link">+91 93873 81780</a></p>
+                <p className="meta-contact-value" style={{ color: 'var(--text-muted)' }}>Primary: <a href="tel:+918547102556" className="contact-link">+91 85471 02556</a></p>
+                <p className="meta-contact-value" style={{ color: 'var(--text-muted)' }}>Secondary: <a href="tel:+919387381780" className="contact-link">+91 93873 81780</a></p>
               </div>
 
               <div className="meta-contact-item">
                 <b className="meta-contact-label">✉️ Electronic Mail</b>
-                <p className="meta-contact-value"><a href="mailto:sreeramenterprises12@gmail.com" className="contact-link">sreeramenterprises12@gmail.com</a></p>
-                <p className="meta-contact-value"><a href="mailto:asreeram8a@gmail.com" className="contact-link">asreeram8a@gmail.com</a></p>
+                <p className="meta-contact-value" style={{ color: 'var(--text-muted)' }}><a href="mailto:sreeramenterprises12@gmail.com" className="contact-link">sreeramenterprises12@gmail.com</a></p>
+                <p className="meta-contact-value" style={{ color: 'var(--text-muted)' }}><a href="mailto:asreeram8a@gmail.com" className="contact-link">asreeram8a@gmail.com</a></p>
               </div>
 
               <div className="meta-contact-item">
                 <b className="meta-contact-label">💼 Tax Registration</b>
-                <p className="meta-contact-value">GSTIN: <span className="gst-code-badge">32ASGPR5532C1Z1</span></p>
+                <p className="meta-contact-value" style={{ color: 'var(--text-muted)' }}>GSTIN: <span className="gst-code-badge" style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>32ASGPR5532C1Z1</span></p>
               </div>
             </div>
             
-            <small className="commercial-note">
+            <small className="commercial-note" style={{ display: 'block', marginTop: '24px', color: 'var(--text-muted)', fontSize: '0.8rem', lineHeight: '1.4' }}>
               * Official commercial project estimates, chemical supply volumes, and vendor verification invoices are handled in strict accordance with state and central GST frameworks.
             </small>
           </div>
 
-          {/* Right Side: Interactive Live Form Sheet */}
-          <div className="contact-form-container">
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <p className="form-requirement-hint">
+          {/* Right Side: Interactive Live Form Sheet (Now styled as a glass-card) */}
+          <div className="contact-form-container glass-card" style={{ padding: '32px' }}>
+            <form className="contact-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <p className="form-requirement-hint" style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
                 * Please provide either your Full Name or Company Name so we can process your requirement.
               </p>
 
@@ -177,27 +178,28 @@ export default function Contact() {
 
               <button 
                 type="submit" 
-                className="form-submit-action-btn"
+                className="form-submit-action-btn btn-glow"
                 disabled={formStatus === "Sending..."}
+                style={{ width: '100%', marginTop: '8px' }}
               >
                 {formStatus === "Sending..." ? "Transmitting Details..." : "Submit Requirement"}
               </button>
             </form>
 
             {/* Dynamic Status Notifications */}
-            <div className="status-message-wrapper">
+            <div className="status-message-wrapper" style={{ marginTop: '16px' }}>
               {formStatus === "ValidationError" && (
-                <div className="form-status status-error" role="alert">
+                <div className="form-status status-error" role="alert" style={{ color: '#f87171', fontSize: '0.9rem' }}>
                   ⚠️ Identification Required: Please complete either the "Full Name" or "Company Name" field.
                 </div>
               )}
               {formStatus === "Success" && (
-                <div className="form-status status-success" role="alert">
+                <div className="form-status status-success" role="alert" style={{ color: '#34d399', fontSize: '0.9rem' }}>
                   ✓ Message successfully transmitted to our engineering desk. We will review your requirements shortly.
                 </div>
               )}
               {formStatus === "Error" && (
-                <div className="form-status status-error" role="alert">
+                <div className="form-status status-error" role="alert" style={{ color: '#f87171', fontSize: '0.9rem' }}>
                   ✕ Transmission failed. Please verify your connection or email us directly.
                 </div>
               )}

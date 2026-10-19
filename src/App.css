@@ -1148,3 +1148,216 @@ body {
     flex-direction: column;
   }
 }
+
+.visual-fallback-box {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers items top-to-bottom */
+  align-items: center;     /* Centers items left-to-right */
+  padding: 40px;
+  text-align: center;
+  color: var(--text-main);
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.05), transparent);
+}
+
+:root {
+  --bg-dark: #070514;
+  --bg-darker: #020108;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-purple: #a855f7;
+  --accent-violet: #8b5cf6;
+  --accent-cyan: #38bdf8;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --curve-main: 12px;
+  --curve-card: 16px;
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background-color: var(--bg-darker);
+  color: var(--text-main);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Cinematic Violet Light Bursts (similar to the reference design) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -2;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.16) 0%, transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+  filter: blur(80px);
+  animation: bg-pulse 15s ease-in-out infinite alternate;
+}
+
+@keyframes bg-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+:root {
+  --bg-dark: #070b19;
+  --bg-darker: #02040a;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-cyan: #38bdf8;
+  --accent-blue: #0ea5e9;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --curve-main: 10px;
+  --curve-card: 14px;
+}
+
+body {
+  background-color: var(--bg-darker);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Professional Engineering Ambient Lighting & Grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 50% 10%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 10% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 90%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+:root {
+  --bg-dark: #0a0614;
+  --bg-darker: #04020a;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-purple: #c084fc;
+  --accent-violet: #8b5cf6;
+  --accent-cyan: #38bdf8;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --curve-main: 12px;
+  --curve-card: 16px;
+}
+
+body {
+  background-color: var(--bg-darker);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Matching Cinematic Violet Ambient Lighting & Light Bursts */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -2;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 15%, rgba(139, 92, 246, 0.18) 0%, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(192, 132, 252, 0.14) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 65%);
+  filter: blur(90px);
+  animation: bg-pulse 14s ease-in-out infinite alternate;
+}
+
+@keyframes bg-pulse {
+  0% { transform: scale(1); opacity: 0.85; }
+  100% { transform: scale(1.06); opacity: 1; }
+}
+
+/* Subtle Technical Grid Overlay with Violet Tint */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(139, 92, 246, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  minHeight: 90vh;
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  padding: 120px 0 80px 0;
+}
+
+/* =========================================================
+   GLOBAL CINEMATIC BACKGROUND & DECORATIONS
+   ========================================================= */
+
+body {
+  background-color: #020108;
+  color: #f8fafc;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Floating Ambient Light Orbs Across the Entire Website */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 10% 15%, rgba(139, 92, 246, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 90% 75%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(192, 132, 252, 0.08) 0%, transparent 60%);
+  filter: blur(80px);
+}
+
+/* Technical Grid Pattern Across All Sections */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(192, 132, 252, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 132, 252, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Section-specific background depth */
+section {
+  position: relative;
+  z-index: 1;
+}
