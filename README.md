@@ -8,6 +8,13 @@ Built with React and Vite, styled cleanly via Tailwind CSS, and optimized for se
 
 ---
 
+## 🌐 Live Website
+
+- **Production URL:** [https://sreeram-enterprises.vercel.app/](https://sreeram-enterprises.vercel.app/)
+- **Deployment Platform:** Vercel
+
+---
+
 ## Features
 
 ### Dynamic Showcase & Branding
@@ -40,7 +47,7 @@ Built with React and Vite, styled cleanly via Tailwind CSS, and optimized for se
 | **Styling Engine** | Tailwind CSS |
 | **Iconography** | Lucide React / React Icons |
 | **Language** | JavaScript (ES6+) / JSX |
-| **Target Deployment** | Vercel / Netlify / GitHub Pages |
+| **Target Deployment** | [Vercel](https://sreeram-enterprises.vercel.app/) |
 
 ---
 
@@ -90,7 +97,7 @@ Built with React and Vite, styled cleanly via Tailwind CSS, and optimized for se
 
 Add project screenshots, UI previews, and demonstration assets here.
 
-Example:
+Example directory structure:
 
 ```plaintext
 /assets
