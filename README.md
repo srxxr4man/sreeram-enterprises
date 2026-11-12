@@ -115,7 +115,7 @@ Want to run the project locally?
 ### 1. Clone the Repository
 
 ```bash
-git clone [YOUR_GITHUB_REPOSITORY_URL](https://github.com/srxxr4man/sreeram-enterprises.git)
+git clone (https://github.com/srxxr4man/sreeram-enterprises.git)
 ```
 
 ### 2. Navigate to the Project Directory
