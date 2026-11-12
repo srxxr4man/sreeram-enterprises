@@ -115,7 +115,7 @@ Want to run the project locally?
 ### 1. Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone [YOUR_GITHUB_REPOSITORY_URL](https://github.com/srxxr4man/sreeram-enterprises.git)
 ```
 
 ### 2. Navigate to the Project Directory
@@ -163,12 +163,6 @@ assets/
 ├── products_catalog.png
 ├── proprietor_section.png
 └── mobile_view.png
-```
-
-Once uploaded to GitHub, you can display them using:
-
-```markdown
-![Homepage Preview](assets/hero_preview.png)
 ```
 
 ## 🎯 Project Objectives & Learning Outcomes
